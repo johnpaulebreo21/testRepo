@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import LogIn from "./components/LogIn";
+import NavBarz from "./components/NavBarz";
+import { Routes, Route } from "react-router-dom";
+import Main from "./components/Main";
+import "./App.css";
 
 function App() {
+  
+  const show = () =>{
+   let item_value = sessionStorage.getItem("user");
+    if (item_value) {
+      console.log("Main");
+      return <Main/>
+    }else{
+      console.log("LogIn");
+      return <LogIn/>
+    }
+
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div> 
+       {show()}
+    </div> 
   );
 }
+
 
 export default App;
